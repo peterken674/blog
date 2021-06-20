@@ -6,3 +6,7 @@ class NewBlog(FlaskForm):
     title = StringField("", validators =[Required()], render_kw={"placeholder": "Blog title..."})
     content = TextAreaField("", render_kw={"placeholder": "Tell your story..."})
     submit = SubmitField('Publish')
+
+class NewComment(FlaskForm):
+    comment = TextAreaField("", render_kw={"placeholder": "Your thoughts..."})
+    submit = SubmitField('Comment')
