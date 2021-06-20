@@ -1,17 +1,16 @@
 {% extends 'index.html'%} {% block sidebar %}{{ super() }}
 <div class="sidebar p-3 position-fixed">
 
-	<button class="profile-pic block overflow-hidden rounded-full" type="button" data-toggle="popover" title="Popover Title">
-        {% if current_user.is_authenticated %}
-		<img class="block w-full"
-			src="{{url_for('static', filename=current_user.profile_pic_path)}}"
-			alt="Profile Pic"
-		/>
-        {% else %}
-        <img class="block w-full" src="{{url_for('static', filename='img/default.jpg')}}"
-            alt="Profile Pic" />
-        {% endif %}
-	</button>
+	<form action="{{ url_for('main.profile', username = current_user.username, id = current_user.id)}}">
+        <button class="profile-pic block overflow-hidden rounded-full" type="submit">
+            {% if current_user.is_authenticated %}
+            <img class="block w-full" src="{{url_for('static', filename=current_user.profile_pic_path)}}"
+                alt="Profile Pic" />
+            {% else %}
+            <img class="block w-full" src="{{url_for('static', filename='img/default.jpg')}}" alt="Profile Pic" />
+            {% endif %}
+        </button>
+    </form>
 
 </div>
 {% endblock %} {% block space %} {{ super() }}

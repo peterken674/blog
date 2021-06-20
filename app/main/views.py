@@ -3,9 +3,9 @@ from flask.globals import request
 from flask_wtf import form
 from werkzeug.utils import redirect
 from . import main
-from .forms import NewBlog, NewComment
-from ..models import Post,Comment
-from .. import db
+from .forms import NewBlog, NewComment, UpdateProfilePic
+from ..models import Post,Comment, User
+from .. import db, photos
 from flask_login import login_required, current_user
 import markdown2
 
@@ -39,7 +39,7 @@ def new_article():
 
     return render_template('new-article.html', title=title, article_form = article_form)
 
-@main.route('/article/<id>', methods = ['GET', 'POST'])
+@main.route('/article/<int:id>', methods = ['GET', 'POST'])
 def article(id):
 
     post = Post.query.filter_by(id=id).first()
@@ -60,3 +60,22 @@ def article(id):
         return redirect(request.referrer)
 
     return render_template('article.html', title=title, post=post, formatted_post=formatted_post, form=form, comments=formatted_comments)
+
+@main.route('/user/<int:id>/<username>', methods = ['GET', 'POST'])
+@login_required
+def profile(id, username):
+
+    form = UpdateProfilePic()
+    user = User.query.filter_by(id=id).first()
+    posts = Post.get_posts_by_user(id)
+
+    title = '{} {} | Profile'.format(user.fname, user.lname)
+
+    if form.validate_on_submit():
+        filename = photos.save(form.profile.data)
+        profile_pic_path = f'img/{filename}'
+        user.profile_pic_path = profile_pic_path
+        db.session.commit()
+        return redirect(url_for('main.profile', id=id, username=user.username))
+
+    return render_template('profile.html', posts=posts, form=form, user=user, title=title)

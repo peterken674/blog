@@ -149,4 +149,45 @@ body {
 .post-wrapper {
   background-color: white;
 }
+
+.profile-content {
+  margin-top: 15vh;
+  background-color: white;
+  border-radius: 1rem;
+  padding: 4rem;
+}
+
+.profile-content .profile-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  margin-bottom: 3rem;
+}
+
+.profile-content .profile-header > div {
+  margin-right: 1rem;
+}
+
+.profile-content h4 {
+  color: #0C6EFD;
+}
+
+#dp img {
+  height: 12rem;
+  width: 12rem;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 0.5rem;
+}
+
+.prof-post-ftr {
+  font-size: 0.8rem;
+}
 /*# sourceMappingURL=style.css.map */
