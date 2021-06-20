@@ -1,0 +1,12 @@
+{% extends 'base.html' %} {% block main %} {{ super() }}
+<div class="container">
+    <div class="content-wrapper">
+        <div class="row">
+            <div class="col">
+                {% block space %}{% endblock %}
+                {% block error %}{% endblock %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
