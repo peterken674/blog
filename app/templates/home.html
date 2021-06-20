@@ -2,15 +2,10 @@
 <div class="sidebar p-3 position-fixed">
 
 	<button class="profile-pic block overflow-hidden rounded-full" type="button" data-toggle="popover" title="Popover Title">
-        {% if current_user.is_authenticated %}
 		<img class="block w-full"
 			src="{{url_for('static', filename=current_user.profile_pic_path)}}"
 			alt="Profile Pic"
 		/>
-        {% else %}
-        <img class="block w-full" src="{{url_for('static', filename='img/default.jpg')}}"
-            alt="Profile Pic" />
-        {%endif%}
 	</button>
 
 </div>
@@ -30,37 +25,37 @@
     </div>
 
     <!-- #################### -->
-    {% for post in posts %}
+    {% for post in formatted_posts %}
 	<div class="card p-3 my-2">
         <div class="d-flex align-items-center author mb-3">
             <div class="pic me-2">
                 <div class="author-pic ">
-                    <img src="{{url_for('static', filename='img/rachel.jpg')}}" alt="">
+                    <img src="{{url_for('static', filename=post['obj'].user.profile_pic_path)}}" alt="">
                 </div>
             </div>
             <div class="name">
-                <strong>{{ post.user.fname }} {{ post.user.lname }}</strong><br>
-                <small class="post-date">Jun 19, 2021</small>
+                <strong>{{ post['obj'].user.fname }} {{ post['obj'].user.lname }}</strong><br>
+                <small class="post-date">{{ post['obj'].posted.strftime('%I:%M %p, %b %d, %Y') }}</small>
             </div>
         </div>
 		<div class="post-preview">
-            <h5><strong>{{ post.title }}</strong></h5>
+            <h5><strong>{{ post['obj'].title }}</strong></h5>
             <p class="preview">
-                {{ formated_post | safe | truncate(300)}}
-            </10>
+                {{ post['formatted_content'] | safe | truncate(300)}}
+            </p>
         </div>
         <div class="post-footer d-flex">
             <div class="likes me-4">
-               <i class="fas fa-thumbs-up mx-1"></i>29
+               <i class="fas fa-thumbs-up mx-1"></i>{{post['obj'].likes.count()}}
             </div>
             <div class="comments">
-                <i class="fas fa-comment mx-1"></i>6
+                <i class="fas fa-comment mx-1"></i>{{post['obj'].comments.count()}}
             </div>
         </div>
 	</div>
-    {% endfor %}
+    {%endfor%}
+    
 
-   
 </div>
 
 {% endblock %}

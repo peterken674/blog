@@ -13,10 +13,13 @@ def index():
     title='Blogg'
 
     posts = Post.get_posts()
+    formatted_posts = []
+    for post in posts:
+        post_dict = {'obj': post}
+        post_dict['formatted_content'] = markdown2.markdown(post.content,extras=["code-friendly", "fenced-code-blocks"])
+        formatted_posts.append(post_dict)
 
-    formated_post = markdown2.markdown(posts[0].content,extras=["code-friendly", "fenced-code-blocks"])
-
-    return render_template('home.html', title=title, posts = posts, formated_post = formated_post)
+    return render_template('home.html', title=title, formatted_posts=formatted_posts)
 
 @main.route('/new-article', methods = ['GET', 'POST'])
 @login_required

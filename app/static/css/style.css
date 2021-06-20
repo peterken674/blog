@@ -110,7 +110,7 @@ body {
   border-radius: 50%;
 }
 
-.preview {
+.preview, .preview p > p {
   font-size: 0.8rem;
 }
 
