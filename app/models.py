@@ -80,7 +80,7 @@ class Post(db.Model):
     id = db.Column(db.Integer,primary_key = True)
     title = db.Column(db.String(255))
     content = db.Column(db.String())
-    posted = db.Columns(db.DateTime, default=datetime.now)
+    posted = db.Column(db.DateTime, default=datetime.now)
 
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     likes = db.relationship('PostLike', backref='post', lazy='dynamic')
@@ -105,7 +105,7 @@ class Comment(db.Model):
 
     id = db.Column(db.Integer,primary_key = True)
     comment = db.Column(db.String())
-    posted = db.Columns(db.DateTime, default=datetime.now)
+    posted = db.Column(db.DateTime, default=datetime.now)
 
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     post_id = db.Column(db.Integer, db.ForeignKey('posts.id'))
