@@ -55,17 +55,17 @@
                 </div>
                 <div class="post-footer d-flex">
                     <div class="likes me-4">
-                        <i class="fas fa-thumbs-up mx-1"></i>{{post['obj'].likes.count()}}
+                        <a href="url_for('main.like')"><i class="fas fa-thumbs-up mx-1"></i></a>{{post['obj'].likes.count()}}
                     </div>
                     <div class="comments">
-                        <i class="fas fa-comment mx-1"></i>{{post['obj'].comments.count()}}
+                        <a href="#"><i class="fas fa-comment mx-1"></i></a>{{post['obj'].comments.count()}}
                     </div>
                 </div>
             </div>
         </button>
     </form>
     {%endfor%}
-    
+
 
 </div>
 

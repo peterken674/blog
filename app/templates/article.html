@@ -39,10 +39,10 @@
 
         <div class="post-footer d-flex">
             <div class="likes me-4">
-                <i class="fas fa-thumbs-up mx-1"></i>{{post.likes.count()}}
+                <a href="{{url_for('main.like', id=post.id)}}"><i class="fas fa-thumbs-up mx-1"></i></a>{{post.likes.count()}}
             </div>
             <div class="comments">
-                <i class="fas fa-comment mx-1"></i>{{post.comments.count()}}
+                <a href="#"><i class="fas fa-comment mx-1"></i></a>{{post.comments.count()}}
             </div>
         </div>
         <!-- Comments -->

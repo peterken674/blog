@@ -31,7 +31,7 @@ def new_article():
 
     if article_form.validate_on_submit():
         new_post = Post(title = article_form.title.data, content = article_form.content.data, user=current_user)
-        
+
         new_post.save_post()
 
         return redirect(url_for('main.index'))
@@ -78,3 +78,11 @@ def profile(id, username):
         return redirect(url_for('main.profile', id=id, username=user.username))
 
     return render_template('profile.html', posts=posts, form=form, user=user, title=title)
+
+@main.route('/<int:id>/', methods = ['GET', 'POST'])
+@login_required
+def like(id):
+    post = Post.query.filter_by(id=id).first_or_404()
+    current_user.like_post(post)
+    db.session.commit()
+    return redirect(request.referrer)

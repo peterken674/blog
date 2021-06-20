@@ -44,25 +44,16 @@ class User(UserMixin,db.Model):
         if not self.has_liked_post(post):
             like = PostLike(user_id=self.id, post_id=post.id)
             db.session.add(like)
+        else:
+            like = PostLike.query.filter(PostLike.user_id == self.id, PostLike.post_id == post.id).first()
+            db.session.delete(like)
 
-    def unlike_post(self, post):
-        if self.has_liked_post(post):
-            PostLike.query.filter_by(user_id = self.id, post_id = post.id).delete()
+    # def unlike_post(self, post):
+    #     if self.has_liked_post(post):
+    #         PostLike.query.filter_by(user_id = self.id, post_id = post.id).delete()
 
     def has_liked_post(self, post):
-        return PostLike.query.filter(PostLike.user_id == self.id, PostLike.post_id == post.id).count() > 0 
-
-    def like_comment(self, comment):
-        if not self.has_liked_comment(comment):
-            like = CommentLike(user_id=self.id, comment_id=comment.id)
-            db.session.add(like)
-
-    def unlike_comment(self, comment):
-        if self.has_liked_comment(comment):
-            CommentLike.query.filter_by(user_id = self.id, comment_id = comment.id).delete()
-
-    def has_liked_comment(self, comment):
-        return CommentLike.query.filter(CommentLike.user_id == self.id, CommentLike.comment_id == comment.id).count() > 0 
+        return PostLike.query.filter(PostLike.user_id == self.id, PostLike.post_id == post.id).count() > 0
 
     def __repr__(self):
         return f'User {self.username}'
