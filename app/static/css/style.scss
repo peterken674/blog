@@ -1,12 +1,10 @@
 @import url(https://fonts.googleapis.com/css?family=Inter:100,200,300,regular,500,600,700,800,900);
-
-$main-font : 'Inter', sans-serif;
+$main-font: 'Inter', sans-serif;
 $text-font-color: #474242;
 $primary-color: #0C6EFD;
 $bg-color: #F5F7FA;
 
 html{
-    font-family: $main-font !important;
     font-size: 18px;
     margin: 0;
     padding: 0;
@@ -14,6 +12,7 @@ html{
 }
 body{
     background-color: $bg-color;
+    font-family: $main-font !important;
 }
 .container{
     width: 80%;

@@ -1,6 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Inter:100,200,300,regular,500,600,700,800,900);
 html {
-  font-family: "Inter", sans-serif !important;
   font-size: 18px;
   margin: 0;
   padding: 0;
@@ -10,6 +9,7 @@ html {
 
 body {
   background-color: #F5F7FA;
+  font-family: "Inter", sans-serif !important;
 }
 
 .container {

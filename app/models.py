@@ -79,7 +79,7 @@ class Post(db.Model):
     __tablename__ = 'posts'
 
     id = db.Column(db.Integer,primary_key = True)
-    title = db.Column(db.String(255))
+    title = db.Column(db.String())
     content = db.Column(db.String())
     posted = db.Column(db.DateTime, default=datetime.now)
 

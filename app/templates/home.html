@@ -1,18 +1,24 @@
 {% extends 'index.html'%} {% block sidebar %}{{ super() }}
 <div class="sidebar p-3 position-fixed">
-	<button class="profile-pic block overflow-hidden rounded-full">
+
+	<button class="profile-pic block overflow-hidden rounded-full" type="button" data-toggle="popover" title="Popover Title">
+        {% if current_user.is_authenticated %}
 		<img class="block w-full"
-			src="{{url_for('static', filename='img/peterken.jpg')}}"
+			src="{{url_for('static', filename=current_user.profile_pic_path)}}"
 			alt="Profile Pic"
 		/>
+        {% else %}
+        <img class="block w-full" src="{{url_for('static', filename='img/default.jpg')}}"
+            alt="Profile Pic" />
+        {%endif%}
 	</button>
+
 </div>
 {% endblock %} {% block space %} {{ super() }}
 
 <div class="col-10">
-	{% if not current_user.is_authenticated %}
+
         {% block banner %} {% include 'navbar.html' %} {% endblock %}
-    {% endif %}
 
     <!-- Write new article -->
     <div class="card px-2 my-2 position-relative">
@@ -24,6 +30,7 @@
     </div>
 
     <!-- #################### -->
+    {% for post in posts %}
 	<div class="card p-3 my-2">
         <div class="d-flex align-items-center author mb-3">
             <div class="pic me-2">
@@ -32,17 +39,15 @@
                 </div>
             </div>
             <div class="name">
-                <strong>Sayed Alesawy</strong><br>
+                <strong>{{ post.user.fname }} {{ post.user.lname }}</strong><br>
                 <small class="post-date">Jun 19, 2021</small>
             </div>
         </div>
 		<div class="post-preview">
-            <h5><strong>HTTP status codes and messages.</strong></h5>
+            <h5><strong>{{ post.title }}</strong></h5>
             <p class="preview">
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eveniet sunt
-                fugiat facilis, ut rem praesentium numquam possimus ducimus, enim mollitia
-                molestiae debitis id dolorum, rerum magni corporis deleniti. Quas, veniam...
-            </p>
+                {{ formated_post | safe | truncate(300)}}
+            </10>
         </div>
         <div class="post-footer d-flex">
             <div class="likes me-4">
@@ -53,98 +58,9 @@
             </div>
         </div>
 	</div>
+    {% endfor %}
 
-    <div class="card p-3 my-2">
-        <div class="d-flex align-items-center author mb-3">
-            <div class="pic me-2">
-                <div class="author-pic ">
-                    <img src="{{url_for('static', filename='img/rachel.jpg')}}" alt="">
-                </div>
-            </div>
-            <div class="name">
-                <strong>Sayed Alesawy</strong><br>
-                <small class="post-date">Jun 19, 2021</small>
-            </div>
-        </div>
-        <div class="post-preview">
-            <h5><strong>HTTP status codes and messages.</strong></h5>
-            <p class="preview">
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eveniet sunt
-                fugiat facilis, ut rem praesentium numquam possimus ducimus, enim mollitia
-                molestiae debitis id dolorum, rerum magni corporis deleniti. Quas, veniam...
-            </p>
-        </div>
-        <div class="post-footer d-flex">
-            <div class="likes me-4">
-                <i class="fas fa-thumbs-up mx-1"></i>29
-            </div>
-            <div class="comments">
-                <i class="fas fa-comment mx-1"></i>6
-            </div>
-        </div>
-    </div>
-
-    <div class="card p-3 my-2">
-        <div class="d-flex align-items-center author mb-3">
-            <div class="pic me-2">
-                <div class="author-pic ">
-                    <img src="{{url_for('static', filename='img/rachel.jpg')}}" alt="">
-                </div>
-            </div>
-            <div class="name">
-                <strong>Sayed Alesawy</strong><br>
-                <small class="post-date">Jun 19, 2021</small>
-            </div>
-        </div>
-        <div class="post-preview">
-            <h5><strong>HTTP status codes and messages.</strong></h5>
-            <p class="preview">
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eveniet sunt
-                fugiat facilis, ut rem praesentium numquam possimus ducimus, enim mollitia
-                molestiae debitis id dolorum, rerum magni corporis deleniti. Quas, veniam...
-            </p>
-        </div>
-        <div class="post-footer d-flex">
-            <div class="likes me-4">
-                <i class="fas fa-thumbs-up mx-1"></i>29
-            </div>
-            <div class="comments">
-                <i class="fas fa-comment mx-1"></i>6
-            </div>
-        </div>
-    </div>
-
-    <div class="card p-3 my-2">
-        <div class="d-flex align-items-center author mb-3">
-            <div class="pic me-2">
-                <div class="author-pic ">
-                    <img src="{{url_for('static', filename='img/rachel.jpg')}}" alt="">
-                </div>
-            </div>
-            <div class="name">
-                <strong>Sayed Alesawy</strong><br>
-                <small class="post-date">Jun 19, 2021</small>
-            </div>
-        </div>
-        <div class="post-preview">
-            <h5><strong>HTTP status codes and messages.</strong></h5>
-            <p class="preview">
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eveniet sunt
-                fugiat facilis, ut rem praesentium numquam possimus ducimus, enim mollitia
-                molestiae debitis id dolorum, rerum magni corporis deleniti. Quas, veniam...
-            </p>
-        </div>
-        <div class="post-footer d-flex">
-            <div class="likes me-4">
-                <i class="fas fa-thumbs-up mx-1"></i>29
-            </div>
-            <div class="comments">
-                <i class="fas fa-comment mx-1"></i>6
-            </div>
-        </div>
-    </div>
-    
-
+   
 </div>
 
 {% endblock %}
