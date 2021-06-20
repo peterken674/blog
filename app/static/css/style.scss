@@ -18,9 +18,7 @@ body{
 .container{
     width: 80%;
 }
-.btn{
-    border-radius: 0.5rem;
-}
+
 .profile-pic{
     height: 3.5rem;
     width: 3.5rem;
@@ -93,4 +91,23 @@ body{
 }
 .post-footer{
     color: grey;
+}
+.header{
+    width: 100%;
+}
+.form{
+    #title{
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+        font-size: 2rem;
+        font-weight: 500;
+    }
+    #submit{
+        color: $primary-color;
+        border: 1px solid $primary-color;
+        &:hover{
+            background-color: $primary-color;
+            color: white;
+        }
+    }
 }

@@ -16,10 +16,6 @@ body {
   width: 80%;
 }
 
-.btn {
-  border-radius: 0.5rem;
-}
-
 .profile-pic {
   height: 3.5rem;
   width: 3.5rem;
@@ -111,5 +107,26 @@ body {
 
 .post-footer {
   color: grey;
+}
+
+.header {
+  width: 100%;
+}
+
+.form #title {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  font-size: 2rem;
+  font-weight: 500;
+}
+
+.form #submit {
+  color: #0C6EFD;
+  border: 1px solid #0C6EFD;
+}
+
+.form #submit:hover {
+  background-color: #0C6EFD;
+  color: white;
 }
 /*# sourceMappingURL=style.css.map */

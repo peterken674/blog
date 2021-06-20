@@ -1,0 +1,22 @@
+{% extends 'base.html' %} 
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{%block styles %}
+{{super()}}
+<!--Importing the simple mde css and js files  -->
+{{ simplemde.css}}
+{{ simplemde.js }}
+
+{% endblock %}
+
+{% block main %} 
+{{ super() }}
+
+<div class="container">
+    <div class="form m-3">
+        {{ wtf.quick_form(article_form) }}
+        {{simplemde.load }}
+    </div>
+
+</div>
+{%endblock%}
