@@ -5,7 +5,7 @@ from . import main
 @main.route('/')
 def index():
 
-    title='Home | MOTD'
+    title='Home | Blogg'
 
 
     return render_template('home.html', title=title)

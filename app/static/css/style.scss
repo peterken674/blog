@@ -1,0 +1,96 @@
+@import url(https://fonts.googleapis.com/css?family=Inter:100,200,300,regular,500,600,700,800,900);
+
+$main-font : 'Inter', sans-serif;
+$text-font-color: #474242;
+$primary-color: #0C6EFD;
+$bg-color: #F5F7FA;
+
+html{
+    font-family: $main-font !important;
+    font-size: 18px;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: $bg-color;
+}
+.container{
+    width: 80%;
+}
+.btn{
+    border-radius: 0.5rem;
+}
+.profile-pic{
+    height: 3.5rem;
+    width: 3.5rem;
+    border-radius: 50%;
+    overflow: hidden;
+    &:hover{
+        cursor: pointer;
+    }
+    img{
+        object-fit: cover;
+        height: 3.5rem;
+        width: 3.5rem;
+    }
+}
+.sidebar{
+    height: 100vh;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+.banner{
+    width: 100%;
+}
+.new-article{
+    background-color: $bg-color;
+    text-align: start;
+    color: grey;
+    border: 0.3px solid lightgrey;
+    &:hover{
+        background-color: white;
+        color: grey;
+    }
+}
+
+.author-pic {
+    height: 2.5rem;
+    width: 2.5rem;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid white;
+    border-collapse: separate;
+    border-spacing: 4px;
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    img {
+        object-fit: cover;
+        height: 100%;
+        width: 100%;
+    }
+}
+.author{
+    color: $text-font-color;
+    .name {
+        line-height: 1rem;
+    }
+
+    .post-date {
+        font-size: 0.8rem;
+    }
+}
+.pic{
+    border: 2px solid orange;
+    border-radius: 50%;
+}
+.preview{
+    font-size: 0.8rem;
+}
+.post-footer{
+    color: grey;
+}

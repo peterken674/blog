@@ -1,18 +1,148 @@
-{% extends 'index.html'%}
-
-{% block space %} {{ super() }}
-<div class="home">
-    <div class="container">
-	<div>
-		<div class="col">
-            <h1>Popular Movies</h1>
-			<div class="movies-wrapper">
-
-				
-
-			</div>
-		</div>
+{% extends 'index.html'%} {% block sidebar %}{{ super() }}
+<div class="sidebar p-3 position-fixed">
+	<div class="profile-pic">
+		<img
+			src="{{url_for('static', filename='img/peterken.jpg')}}"
+			alt="Profile Pic"
+		/>
 	</div>
 </div>
+{% endblock %} {% block space %} {{ super() }}
+
+<div class="col-10">
+	{% block banner %} {% include 'navbar.html' %} {% endblock %}
+
+    <!-- Write new article -->
+    <div class="card px-2 my-2 position-relative">
+        <form class="mx-3 mt-4 mb-3" action="#">
+            <button type="submit" class="btn btn-block new-article p-3">
+                <i class="fas fa-pencil-alt me-3"></i>Write an article...
+            </button>
+        </form>
+    </div>
+
+    <!-- #################### -->
+	<div class="card p-3 my-2">
+        <div class="d-flex align-items-center author mb-3">
+            <div class="pic me-2">
+                <div class="author-pic ">
+                    <img src="{{url_for('static', filename='img/rachel.jpg')}}" alt="">
+                </div>
+            </div>
+            <div class="name">
+                <strong>Sayed Alesawy</strong><br>
+                <small class="post-date">Jun 19, 2021</small>
+            </div>
+        </div>
+		<div class="post-preview">
+            <h5><strong>HTTP status codes and messages.</strong></h5>
+            <p class="preview">
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eveniet sunt
+                fugiat facilis, ut rem praesentium numquam possimus ducimus, enim mollitia
+                molestiae debitis id dolorum, rerum magni corporis deleniti. Quas, veniam...
+            </p>
+        </div>
+        <div class="post-footer d-flex">
+            <div class="likes me-4">
+               <i class="fas fa-thumbs-up mx-1"></i>29
+            </div>
+            <div class="comments">
+                <i class="fas fa-comment mx-1"></i>6
+            </div>
+        </div>
+	</div>
+
+    <div class="card p-3 my-2">
+        <div class="d-flex align-items-center author mb-3">
+            <div class="pic me-2">
+                <div class="author-pic ">
+                    <img src="{{url_for('static', filename='img/rachel.jpg')}}" alt="">
+                </div>
+            </div>
+            <div class="name">
+                <strong>Sayed Alesawy</strong><br>
+                <small class="post-date">Jun 19, 2021</small>
+            </div>
+        </div>
+        <div class="post-preview">
+            <h5><strong>HTTP status codes and messages.</strong></h5>
+            <p class="preview">
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eveniet sunt
+                fugiat facilis, ut rem praesentium numquam possimus ducimus, enim mollitia
+                molestiae debitis id dolorum, rerum magni corporis deleniti. Quas, veniam...
+            </p>
+        </div>
+        <div class="post-footer d-flex">
+            <div class="likes me-4">
+                <i class="fas fa-thumbs-up mx-1"></i>29
+            </div>
+            <div class="comments">
+                <i class="fas fa-comment mx-1"></i>6
+            </div>
+        </div>
+    </div>
+
+    <div class="card p-3 my-2">
+        <div class="d-flex align-items-center author mb-3">
+            <div class="pic me-2">
+                <div class="author-pic ">
+                    <img src="{{url_for('static', filename='img/rachel.jpg')}}" alt="">
+                </div>
+            </div>
+            <div class="name">
+                <strong>Sayed Alesawy</strong><br>
+                <small class="post-date">Jun 19, 2021</small>
+            </div>
+        </div>
+        <div class="post-preview">
+            <h5><strong>HTTP status codes and messages.</strong></h5>
+            <p class="preview">
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eveniet sunt
+                fugiat facilis, ut rem praesentium numquam possimus ducimus, enim mollitia
+                molestiae debitis id dolorum, rerum magni corporis deleniti. Quas, veniam...
+            </p>
+        </div>
+        <div class="post-footer d-flex">
+            <div class="likes me-4">
+                <i class="fas fa-thumbs-up mx-1"></i>29
+            </div>
+            <div class="comments">
+                <i class="fas fa-comment mx-1"></i>6
+            </div>
+        </div>
+    </div>
+
+    <div class="card p-3 my-2">
+        <div class="d-flex align-items-center author mb-3">
+            <div class="pic me-2">
+                <div class="author-pic ">
+                    <img src="{{url_for('static', filename='img/rachel.jpg')}}" alt="">
+                </div>
+            </div>
+            <div class="name">
+                <strong>Sayed Alesawy</strong><br>
+                <small class="post-date">Jun 19, 2021</small>
+            </div>
+        </div>
+        <div class="post-preview">
+            <h5><strong>HTTP status codes and messages.</strong></h5>
+            <p class="preview">
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eveniet sunt
+                fugiat facilis, ut rem praesentium numquam possimus ducimus, enim mollitia
+                molestiae debitis id dolorum, rerum magni corporis deleniti. Quas, veniam...
+            </p>
+        </div>
+        <div class="post-footer d-flex">
+            <div class="likes me-4">
+                <i class="fas fa-thumbs-up mx-1"></i>29
+            </div>
+            <div class="comments">
+                <i class="fas fa-comment mx-1"></i>6
+            </div>
+        </div>
+    </div>
+    
+
 </div>
+
 {% endblock %}

@@ -18,7 +18,7 @@ def login():
 
         flash('Invalid username or Password')
 
-    title = "Log In | MOTD"
+    title = "Log In | Blogg"
     return render_template('auth/login.html',login_form = login_form,title=title)
 
 
@@ -34,7 +34,7 @@ def register():
 
         return redirect(url_for('auth.login'))
 
-    title = "New Account | MOTD"
+    title = "New Account | Blogg"
     return render_template('auth/register.html',registration_form = form, title = title)
 
 @auth.route('/logout')
