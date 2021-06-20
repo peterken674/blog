@@ -16,18 +16,22 @@
             <h2><strong>{{post.title}}</strong></h2>
         </div>
         <hr>
-        <div class="d-flex align-items-center author mb-3">
-            <div class="pic me-2">
-                <div class="author-pic ">
-                    <img src="{{url_for('static', filename=post.user.profile_pic_path)}}" alt="">
+        <form action="{{ url_for('main.profile', id=post.user.id, username=post.user.username)}}">
+            <button type="submit" class="prof-btn">
+                <div class="d-flex align-items-center author mb-3">
+                    <div class="pic me-2">
+                        <div class="author-pic ">
+                            <img src="{{url_for('static', filename=post.user.profile_pic_path)}}" alt="">
+                        </div>
+                    </div>
+                    <div class="name">
+                        <strong>{{ post.user.fname }} {{ post.user.lname }}</strong><br>
+                        <small class="post-date">Published at {{ post.posted.strftime('%I:%M %p, %b %d, %Y.') }}</small>
+                    </div>
+
                 </div>
-            </div>
-            <div class="name">
-                <strong>{{ post.user.fname }} {{ post.user.lname }}</strong><br>
-                <small class="post-date">Published at {{ post.posted.strftime('%I:%M %p, %b %d, %Y.') }}</small>
-            </div>
-            
-        </div>
+            </button>
+        </form>
         <hr>
         <div class="body">
             {{ formatted_post | safe }}

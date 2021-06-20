@@ -62,7 +62,6 @@ def article(id):
     return render_template('article.html', title=title, post=post, formatted_post=formatted_post, form=form, comments=formatted_comments)
 
 @main.route('/user/<int:id>/<username>', methods = ['GET', 'POST'])
-@login_required
 def profile(id, username):
 
     form = UpdateProfilePic()

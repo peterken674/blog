@@ -1,16 +1,19 @@
 {% extends 'index.html'%} {% block sidebar %}{{ super() }}
 <div class="sidebar p-3 position-fixed">
-
+    {% if current_user.is_authenticated %}
 	<form action="{{ url_for('main.profile', username = current_user.username, id = current_user.id)}}">
         <button class="profile-pic block overflow-hidden rounded-full" type="submit">
-            {% if current_user.is_authenticated %}
             <img class="block w-full" src="{{url_for('static', filename=current_user.profile_pic_path)}}"
                 alt="Profile Pic" />
-            {% else %}
+    </form>
+    {% else %}
+    <form action="{{ url_for('auth.login')}}">
+        <button class="profile-pic block overflow-hidden rounded-full" type="submit">
             <img class="block w-full" src="{{url_for('static', filename='img/default.jpg')}}" alt="Profile Pic" />
-            {% endif %}
         </button>
     </form>
+    {% endif %}
+
 
 </div>
 {% endblock %} {% block space %} {{ super() }}

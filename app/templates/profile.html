@@ -5,13 +5,15 @@
     <div class="profile-content">
         <div class="profile-header">
             <div id="dp">
-                <img src="{{url_for('static', filename=current_user.profile_pic_path)}}" />
+                <img src="{{url_for('static', filename=user.profile_pic_path)}}" />
             </div>
             <div id="names">
-                <div id="full-name">{{user.fname}} {{user.lname}}</div>
+                <div id="full-name"><strong>{{user.fname}} {{user.lname}}</strong></div>
                 <div id="username">@{{user.username}}</div>
                 <hr>
+            {% if current_user == user %}
                 {{ wtf.quick_form(form) }}
+            {% endif %}
             </div>
         </div>
         <div id="bio">
@@ -31,7 +33,7 @@
         </div>
 
         <div id="postes">
-            <h4>My Posts</h4>
+            <h4>Posts</h4>
             <hr />
             {% for post in posts %}
             <div class="post mb-3">

@@ -37,10 +37,10 @@ body {
 }
 
 .profile-pic img {
-  -o-object-fit: contain;
-     object-fit: contain;
-  min-height: 150%;
-  width: 150%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  min-height: 130%;
+  width: 130%;
 }
 
 .sidebar {
@@ -179,6 +179,11 @@ body {
   color: #0C6EFD;
 }
 
+.profile-content a {
+  text-decoration: none;
+  color: grey;
+}
+
 #dp img {
   height: 12rem;
   width: 12rem;
@@ -189,5 +194,11 @@ body {
 
 .prof-post-ftr {
   font-size: 0.8rem;
+}
+
+.prof-btn {
+  border: none;
+  background-color: white;
+  text-align: left;
 }
 /*# sourceMappingURL=style.css.map */

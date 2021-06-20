@@ -30,9 +30,9 @@ body{
         cursor: pointer;
     }
     img{
-        object-fit: contain;
-        min-height: 150%;
-        width: 150%;
+        object-fit: cover;
+        min-height: 130%;
+        width: 130%;
     }
 }
 .sidebar{
@@ -145,6 +145,10 @@ body{
     h4 {
         color: $primary-color;
     }
+    a{
+        text-decoration: none;
+        color: grey;
+    }
 }
 
 #dp img {
@@ -155,4 +159,9 @@ body{
 }
 .prof-post-ftr{
     font-size: 0.8rem;
+}
+.prof-btn{
+    border: none;
+    background-color: white;
+    text-align: left;
 }
