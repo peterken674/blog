@@ -24,13 +24,16 @@ body{
     width: 3.5rem;
     border-radius: 50%;
     overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     &:hover{
         cursor: pointer;
     }
     img{
-        object-fit: cover;
-        height: 3.5rem;
-        width: 3.5rem;
+        object-fit: contain;
+        min-height: 150%;
+        width: 150%;
     }
 }
 .sidebar{

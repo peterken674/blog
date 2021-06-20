@@ -6,6 +6,7 @@ class Config:
     '''
     QUOTES_API_BASE_URL = 'http://quotes.stormconsultancy.co.uk/random.json'
     SECRET_KEY = os.urandom(16)
+    UPLOADED_PHOTOS_DEST = 'app/static/img'
     
     # Email configurations
     MAIL_SERVER = 'smtp.googlemail.com'

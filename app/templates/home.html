@@ -1,16 +1,18 @@
 {% extends 'index.html'%} {% block sidebar %}{{ super() }}
 <div class="sidebar p-3 position-fixed">
-	<div class="profile-pic">
-		<img
+	<button class="profile-pic block overflow-hidden rounded-full">
+		<img class="block w-full"
 			src="{{url_for('static', filename='img/peterken.jpg')}}"
 			alt="Profile Pic"
 		/>
-	</div>
+	</button>
 </div>
 {% endblock %} {% block space %} {{ super() }}
 
 <div class="col-10">
-	{% block banner %} {% include 'navbar.html' %} {% endblock %}
+	{% if not current_user.is_authenticated %}
+        {% block banner %} {% include 'navbar.html' %} {% endblock %}
+    {% endif %}
 
     <!-- Write new article -->
     <div class="card px-2 my-2 position-relative">

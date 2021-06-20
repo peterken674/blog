@@ -13,17 +13,18 @@ def load_user(user_id):
 class User(UserMixin,db.Model):
     __tablename__ = 'users'
 
-    id = db.Column(db.Integer,primary_key = True)
-    username = db.Column(db.String(255),index = True)
-    email = db.Column(db.String(255),unique = True,index = True)
+    id = db.Column(db.Integer, primary_key = True)
+    username = db.Column(db.String(255))
+    fname = db.Column(db.String(255))
+    lname = db.Column(db.String(255))
     bio = db.Column(db.String(255))
+    email = db.Column(db.String(255), unique=True, index=True)
     profile_pic_path = db.Column(db.String())
-    subscribed = db.Column(db.Boolean)
-    password_hash = db.Column(db.String(255))
+    pass_secure = db.Column(db.String(255))
 
     posts = db.relationship('Post', backref='user', lazy='dynamic')
     comments = db.relationship('Comment', backref='user', lazy='dynamic')
-    liked_posts = db.relationship('PostLike', foreign_keys='PitchLike.user_id', backref='user', lazy='dynamic')
+    liked_posts = db.relationship('PostLike', foreign_keys='PostLike.user_id', backref='user', lazy='dynamic')
     liked_comments = db.relationship('CommentLike', foreign_keys='CommentLike.user_id', backref='user', lazy='dynamic')
 
 
@@ -33,23 +34,23 @@ class User(UserMixin,db.Model):
 
     @password.setter
     def password(self, password):
-        self.password_hash = generate_password_hash(password)
+        self.pass_secure = generate_password_hash(password)
 
 
     def verify_password(self,password):
-        return check_password_hash(self.password_hash,password)
+        return check_password_hash(self.pass_secure, password)
 
-    def like_pitch(self, pitch):
-        if not self.has_liked_pitch(pitch):
-            like = PostLike(user_id=self.id, pitch_id=pitch.id)
+    def like_post(self, post):
+        if not self.has_liked_post(post):
+            like = PostLike(user_id=self.id, post_id=post.id)
             db.session.add(like)
 
-    def unlike_pitch(self, pitch):
-        if self.has_liked_pitch(pitch):
-            PostLike.query.filter_by(user_id = self.id, pitch_id = pitch.id).delete()
+    def unlike_post(self, post):
+        if self.has_liked_post(post):
+            PostLike.query.filter_by(user_id = self.id, post_id = post.id).delete()
 
-    def has_liked_pitch(self, pitch):
-        return PostLike.query.filter(PostLike.user_id == self.id, PostLike.pitch_id == pitch.id).count() > 0 
+    def has_liked_post(self, post):
+        return PostLike.query.filter(PostLike.user_id == self.id, PostLike.post_id == post.id).count() > 0 
 
     def like_comment(self, comment):
         if not self.has_liked_comment(comment):
@@ -117,7 +118,7 @@ class Comment(db.Model):
 
     @classmethod
     def get_comments(cls, id):
-        comments = Comment.query.filter_by(pitch_id=id)
+        comments = Comment.query.filter_by(post_id=id)
         return comments
 
 
