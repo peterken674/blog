@@ -86,3 +86,32 @@ def like(id):
     current_user.like_post(post)
     db.session.commit()
     return redirect(request.referrer)
+
+@main.route('/delete/<int:id>', methods=['GET', 'POST'])
+def delete(id):
+    post = Post.query.filter_by(id=id).first_or_404()
+    db.session.delete(post)
+    db.session.commit()
+    return redirect(url_for('main.index'))
+
+@main.route('/article/<int:id>/edit', methods = ['GET', 'POST'])
+@login_required
+def edit_article(id):
+    title = "Edit blog | Blogg"
+    article_form = NewBlog()
+    post = Post.query.filter_by(id=id).first()
+
+    if request.method == 'GET':
+        article_form.title.data = post.title
+        article_form.content.data = post.content
+
+    if article_form.validate_on_submit():
+        post.title = article_form.title.data
+        post.content = article_form.content.data
+
+        db.session.commit()
+
+        return redirect(url_for('main.article', id=id))
+
+
+    return render_template('new-article.html', title=title, article_form = article_form)

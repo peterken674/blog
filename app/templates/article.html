@@ -36,12 +36,12 @@
                 </button>
             </form>
             {% if post.user == current_user %}
-            <form action="" class="col-1 actions">
+            <form action="{{url_for('main.delete', id=post.id)}}" class="col-1 actions">
                 <button type="submit">
                     <i class="fas fa-trash-alt"></i>
                 </button>
             </form>
-            <form action="" class="col-1 actions">
+            <form action="{{url_for('main.edit_article', id=post.id)}}" class="col-1 actions">
                 <button type="submit">
                     <i class="fas fa-pencil-alt"></i>
                 </button>
