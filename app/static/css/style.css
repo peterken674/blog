@@ -1,5 +1,6 @@
 @import url(https://fonts.googleapis.com/css?family=Inter:100,200,300,regular,500,600,700,800,900);
-html {
+@import url(https://fonts.googleapis.com/css?family=Pacifico:regular);
+html, * {
   font-size: 18px;
   margin: 0;
   padding: 0;
@@ -57,6 +58,7 @@ body {
 }
 
 .banner {
+  margin-top: 100px;
   width: 100%;
 }
 
@@ -218,5 +220,31 @@ body {
   height: 2.2rem;
   width: 2.2rem;
   background-color: #0c6cfd17;
+}
+
+nav {
+  height: 80px;
+  background-color: #0C6EFD;
+}
+
+nav .brand {
+  font-family: 'Pacifico', cursive;
+}
+
+nav .brand a {
+  color: white;
+  font-size: 2rem;
+}
+
+nav button {
+  background-color: white !important;
+  border: none;
+  color: #0C6EFD !important;
+  font-weight: 300 !important;
+  font-size: 0.8rem;
+}
+
+.sign-form, .article-wrapper, .new-wrapper {
+  margin-top: 100px !important;
 }
 /*# sourceMappingURL=style.css.map */
