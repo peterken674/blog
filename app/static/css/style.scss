@@ -1,10 +1,12 @@
 @import url(https://fonts.googleapis.com/css?family=Inter:100,200,300,regular,500,600,700,800,900);
+@import url(https://fonts.googleapis.com/css?family=Pacifico:regular);
 $main-font: 'Inter', sans-serif;
 $text-font-color: #474242;
 $primary-color: #0C6EFD;
 $bg-color: #F5F7FA;
 
-html{
+
+html, *{
     font-size: 18px;
     margin: 0;
     padding: 0;
@@ -42,6 +44,7 @@ body{
     align-items: flex-end;
 }
 .banner{
+    margin-top: 100px;
     width: 100%;
 }
 .new-article{
@@ -182,5 +185,24 @@ body{
         height: 2.2rem;
         width: 2.2rem;
         background-color: #0c6cfd17;
+    }
+}
+
+nav{
+    height: 80px;
+    background-color: $primary-color;
+    .brand{
+        font-family: 'Pacifico', cursive;
+        a{
+            color: white;
+            font-size: 2rem;
+        }
+    }
+    button{
+        background-color: white !important;
+        border: none;
+        color: $primary-color !important;
+        font-weight: 300 !important;
+        font-size: 0.8rem;
     }
 }

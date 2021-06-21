@@ -3,19 +3,5 @@
         <div>
             <p><strong>Blogging as a developer, done right!</strong></p>
         </div>
-        <div class="btns d-flex justify-content-center">
-{% if not current_user.is_authenticated %}
-            <form action="{{url_for('auth.login')}}">
-                <button type="submit" class="btn btn-outline-primary mx-1"><strong>Login</strong></button>
-            </form>
-            <form action="{{url_for('auth.register')}}">
-                <button type="submit" class="btn btn-primary mx-1"><strong>Create an account</strong></button>
-            </form>
-{% else %}
-            <form action="{{url_for('auth.logout')}}">
-                <button type="submit" class="btn btn-primary mx-1"><strong>Logout</strong></button>
-            </form>
-{% endif %}
-        </div>
     </div>
 </div>

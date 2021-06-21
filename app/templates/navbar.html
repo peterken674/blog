@@ -1,0 +1,28 @@
+<div class="container-fluid">
+    <nav class="fixed-top py-2">
+       <div class="container">
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="brand text-white">
+                    <a href="{{ url_for('main.index')}}">blogg</a>
+                </div>
+                <div class="quick_actions">
+                    <div class="d-flex">
+                        {% if not current_user.is_authenticated %}
+                        <form action="{{url_for('auth.login')}}">
+                            <button type="submit" class="btn btn-outline-primary mx-1"><strong>Login</strong></button>
+                        </form>
+                        <form action="{{url_for('auth.register')}}">
+                            <button type="submit" class="btn btn-primary mx-1"><strong>Create an
+                                    account</strong></button>
+                        </form>
+                        {% else %}
+                        <form action="{{url_for('auth.logout')}}">
+                            <button type="submit" class="btn btn-primary mx-1"><strong>Logout</strong></button>
+                        </form>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+       </div>
+    </nav>
+</div>

@@ -9,6 +9,10 @@
     <script src="{{url_for('static', filename='js/scripts.js')}}"></script>
 {% endblock %}
 
+{% block navbar %}
+    {% include 'navbar.html'%}
+{% endblock %}
+
 {%block content%}
     {%block main%}
 
