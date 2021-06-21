@@ -165,3 +165,22 @@ body{
     background-color: white;
     text-align: left;
 }
+.likes, .comments{
+    a{
+        color: grey !important;
+        &:hover{
+            color: $primary-color;
+        }
+    }
+}
+.actions{
+    button{
+        border: none;
+        color: $primary-color;
+        border-radius: 50%;
+        padding: 0.2rem;
+        height: 2.2rem;
+        width: 2.2rem;
+        background-color: #0c6cfd17;
+    }
+}

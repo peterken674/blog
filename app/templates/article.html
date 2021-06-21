@@ -16,22 +16,38 @@
             <h2><strong>{{post.title}}</strong></h2>
         </div>
         <hr>
-        <form action="{{ url_for('main.profile', id=post.user.id, username=post.user.username)}}">
-            <button type="submit" class="prof-btn">
-                <div class="d-flex align-items-center author mb-3">
-                    <div class="pic me-2">
-                        <div class="author-pic ">
-                            <img src="{{url_for('static', filename=post.user.profile_pic_path)}}" alt="">
+        <div class="row">
+            <form action="{{ url_for('main.profile', id=post.user.id, username=post.user.username)}}"
+                class="col-10">
+                <button type="submit" class="prof-btn">
+                    <div class="d-flex align-items-center author mb-3">
+                        <div class="pic me-2">
+                            <div class="author-pic ">
+                                <img src="{{url_for('static', filename=post.user.profile_pic_path)}}" alt="">
+                            </div>
                         </div>
-                    </div>
-                    <div class="name">
-                        <strong>{{ post.user.fname }} {{ post.user.lname }}</strong><br>
-                        <small class="post-date">Published at {{ post.posted.strftime('%I:%M %p, %b %d, %Y.') }}</small>
-                    </div>
+                        <div class="name">
+                            <strong>{{ post.user.fname }} {{ post.user.lname }}</strong><br>
+                            <small class="post-date">Published at
+                                {{ post.posted.strftime('%I:%M %p, %b %d, %Y.') }}</small>
+                        </div>
 
-                </div>
-            </button>
-        </form>
+                    </div>
+                </button>
+            </form>
+            {% if post.user == current_user %}
+            <form action="" class="col-1 actions">
+                <button type="submit">
+                    <i class="fas fa-trash-alt"></i>
+                </button>
+            </form>
+            <form action="" class="col-1 actions">
+                <button type="submit">
+                    <i class="fas fa-pencil-alt"></i>
+                </button>
+            </form>
+            {% endif %}
+        </div>
         <hr>
         <div class="body">
             {{ formatted_post | safe }}
@@ -57,6 +73,7 @@
 
         <hr>
         {% for comment in comments %}
+        <hr>
         <div class="comments">
             <div class="d-flex align-items-center author mb-3">
                 <div class="pic me-2">

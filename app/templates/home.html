@@ -33,8 +33,7 @@
 
     <!-- #################### -->
     {% for post in formatted_posts %}
-	<form action="{{ url_for('main.article', id = post['obj'].id)}}">
-        <button type="submit" class="article_btn">
+	
             <div class="card p-3 my-2">
                 <div class="d-flex align-items-center author mb-3">
                     <div class="pic me-2">
@@ -47,23 +46,26 @@
                         <small class="post-date">{{ post['obj'].posted.strftime('%I:%M %p, %b %d, %Y') }}</small>
                     </div>
                 </div>
+                <form action="{{ url_for('main.article', id = post['obj'].id)}}">
+                    <button type="submit" class="article_btn">
                 <div class="post-preview">
                     <h5><strong>{{ post['obj'].title }}</strong></h5>
                     <p class="preview">
                         {{ post['formatted_content'] | safe | truncate(300)}}
                     </p>
                 </div>
+                </button>
+                </form>
                 <div class="post-footer d-flex">
                     <div class="likes me-4">
-                        <a href="url_for('main.like')"><i class="fas fa-thumbs-up mx-1"></i></a>{{post['obj'].likes.count()}}
+                        <a href="{{url_for('main.like', id=post['obj'].id)}}"><i class="fas fa-thumbs-up mx-1"></i></a>{{post['obj'].likes.count()}}
                     </div>
                     <div class="comments">
                         <a href="#"><i class="fas fa-comment mx-1"></i></a>{{post['obj'].comments.count()}}
                     </div>
                 </div>
             </div>
-        </button>
-    </form>
+        
     {%endfor%}
 
 
