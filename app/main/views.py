@@ -78,7 +78,8 @@ def article(id):
 
     if form.validate_on_submit():
         new_comment = Comment(comment=form.comment.data, user=current_user, post=post)
-        new_comment.save_comment()
+        if new_comment.comment:
+            new_comment.save_comment()
         return redirect(request.referrer)
 
     return render_template('article.html', title=title, post=post, formatted_post=formatted_post, form=form, comments=formatted_comments)
