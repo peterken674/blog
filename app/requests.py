@@ -1,6 +1,4 @@
 import urllib.request, json
-
-from flask.globals import session
 from .models import Quote
 
 base_url=None

@@ -1,7 +1,6 @@
 from flask import render_template, url_for
 from flask.globals import request
 from flask_mail import Message
-from flask_wtf import form
 from werkzeug.utils import redirect
 from . import main
 from .forms import NewBlog, NewComment, UpdateProfilePic
@@ -51,7 +50,7 @@ def new_article():
 
                 email = Message(recipients=[user.email], sender=sender_email, subject=subject)
 
-                email.body= render_template("email/new_post.txt", poster=current_user, post=post)
+                email.body= render_template("email/new_post.txt", poster=current_user, post=post, user=user)
                 email.html = render_template("email/new_post.html")
 
             conn.send(email)
