@@ -209,3 +209,14 @@ nav{
 .sign-form, .article-wrapper, .new-wrapper{
     margin-top: 100px !important;
 }
+
+.del{
+    a,i{
+        color: grey;
+        transition: 150ms;
+
+        &:hover {
+            color: red;
+        }
+    }
+}

@@ -1,7 +1,7 @@
 @import url(https://fonts.googleapis.com/css?family=Inter:100,200,300,regular,500,600,700,800,900);
 @import url(https://fonts.googleapis.com/css?family=Pacifico:regular);
 html, * {
-  font-size: 18px;
+  font-size: 16px;
   margin: 0;
   padding: 0;
   -webkit-box-sizing: border-box;
@@ -246,5 +246,15 @@ nav button {
 
 .sign-form, .article-wrapper, .new-wrapper {
   margin-top: 100px !important;
+}
+
+.del a, .del i {
+  color: grey;
+  -webkit-transition: 150ms;
+  transition: 150ms;
+}
+
+.del a:hover, .del i:hover {
+  color: red;
 }
 /*# sourceMappingURL=style.css.map */

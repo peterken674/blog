@@ -137,3 +137,10 @@ def edit_article(id):
 
 
     return render_template('new-article.html', title=title, article_form = article_form)
+
+@main.route('/del/<int:id>', methods=['GET', 'POST'])
+def del_comment(id):
+    comment = Comment.query.filter_by(id=id).first_or_404()
+    db.session.delete(comment)
+    db.session.commit()
+    return redirect(request.referrer)

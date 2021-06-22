@@ -75,17 +75,24 @@
         {% for comment in comments %}
         <hr>
         <div class="comments">
-            <div class="d-flex align-items-center author mb-3">
-                <div class="pic me-2">
-                    <div class="author-pic ">
-                        <img src="{{url_for('static', filename=comment['obj'].user.profile_pic_path)}}" alt="">
+            <div class="d-flex justify-content-between align-items-start">
+                <div class="d-flex align-items-center author mb-3">
+                    <div class="pic me-2">
+                        <div class="author-pic ">
+                            <img src="{{url_for('static', filename=comment['obj'].user.profile_pic_path)}}" alt="">
+                        </div>
+                    </div>
+                    <div class="name">
+                        <strong>{{ comment['obj'].user.fname }} {{ comment['obj'].user.lname }}</strong><br>
+                        <small class="post-date">Commented at
+                            {{ comment['obj'].posted.strftime('%I:%M %p, %b %d, %Y.') }}</small>
                     </div>
                 </div>
-                <div class="name">
-                    <strong>{{ comment['obj'].user.fname }} {{ comment['obj'].user.lname }}</strong><br>
-                    <small class="post-date">Commented at
-                        {{ comment['obj'].posted.strftime('%I:%M %p, %b %d, %Y.') }}</small>
+                {% if current_user==post.user%}
+                <div class="del">
+                    <a href="{{url_for('main.del_comment', id=comment['obj'].id)}}"><i class="fas fa-trash-alt"></i></a>
                 </div>
+                {%endif%}
             </div>
             <div class="post-preview">
                 <p class="preview ms-5">
