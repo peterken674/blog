@@ -8,11 +8,13 @@ from ..models import Post,Comment, User
 from .. import db, photos
 from flask_login import login_required, current_user
 import markdown2
+from ..requests import get_quote
 
 @main.route('/')
 def index():
 
     title='Blogg'
+    quote = get_quote()
 
     posts = Post.get_posts()
     formatted_posts = []
@@ -21,7 +23,7 @@ def index():
         post_dict['formatted_content'] = markdown2.markdown(post.content,extras=["code-friendly", "fenced-code-blocks"])
         formatted_posts.append(post_dict)
 
-    return render_template('home.html', title=title, formatted_posts=formatted_posts)
+    return render_template('home.html', title=title, formatted_posts=formatted_posts, quote=quote)
 
 @main.route('/new-article', methods = ['GET', 'POST'])
 @login_required
