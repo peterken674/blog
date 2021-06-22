@@ -28,7 +28,7 @@ def register():
     if registration_form.validate_on_submit():
         filename = photos.save(registration_form.profile.data)
         profile_pic_path = f'img/{filename}'
-        user = User(email = registration_form.email.data, fname= registration_form.fname.data, lname=registration_form.lname.data, username = registration_form.username.data, profile_pic_path=profile_pic_path, password = registration_form.password.data)
+        user = User(email = registration_form.email.data, fname= registration_form.fname.data, lname=registration_form.lname.data, username = registration_form.username.data, profile_pic_path=profile_pic_path, password = registration_form.password.data, sub = registration_form.sub.data)
         db.session.add(user)
         db.session.commit()
 

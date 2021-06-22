@@ -18,6 +18,7 @@ class User(UserMixin,db.Model):
     fname = db.Column(db.String(255))
     lname = db.Column(db.String(255))
     bio = db.Column(db.String(255))
+    sub = db.Column(db.Boolean, default=False)
     email = db.Column(db.String(255), unique=True, index=True)
     profile_pic_path = db.Column(db.String())
     pass_secure = db.Column(db.String(255))

@@ -1,11 +1,12 @@
 from flask import render_template, url_for
 from flask.globals import request
+from flask_mail import Message
 from flask_wtf import form
 from werkzeug.utils import redirect
 from . import main
 from .forms import NewBlog, NewComment, UpdateProfilePic
 from ..models import Post,Comment, User
-from .. import db, photos
+from .. import db, photos, mail
 from flask_login import login_required, current_user
 import markdown2
 from ..requests import get_quote
@@ -30,11 +31,30 @@ def index():
 def new_article():
     title = "Write blog | Blogg"
     article_form = NewBlog()
+    subscribed_users = User.query.filter_by(sub=True).all()
+
+    if current_user in subscribed_users:
+        subscribed_users.remove(current_user)
+
 
     if article_form.validate_on_submit():
         new_post = Post(title = article_form.title.data, content = article_form.content.data, user=current_user)
 
         new_post.save_post()
+
+        post = Post.query.filter_by(title=new_post.title).first()
+
+        with mail.connect() as conn:
+            sender_email = 'peter.kimani@student.moringaschool.com'
+            for user in subscribed_users:
+                subject = "New post from " + current_user.fname.capitalize() + " " + current_user.lname.capitalize() + " on Blogg."
+
+                email = Message(recipients=[user.email], sender=sender_email, subject=subject)
+
+                email.body= render_template("email/new_post.txt", poster=current_user, post=post)
+                email.html = render_template("email/new_post.html")
+
+            conn.send(email)
 
         return redirect(url_for('main.index'))
 

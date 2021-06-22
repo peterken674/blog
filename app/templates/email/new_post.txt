@@ -1,0 +1,8 @@
+Hi {{ poster.fname.capitalize() }},
+
+Read this new article by {{ poster.fname.capitalize() }} {{ poster.lname.capitalize() }} through this link.
+
+
+{{post.title}} http://127.0.0.1:5000/article/{{post.id}}.
+
+Blog Team

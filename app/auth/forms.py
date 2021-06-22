@@ -20,6 +20,7 @@ class SignUpForm(FlaskForm):
     password = PasswordField('Password', validators=[Required(), EqualTo('password_confirm', message='Passwords do not match.')])
     password_confirm = PasswordField('Confirm Password', validators=[Required()])
     profile = FileField('Upload Profile Picture', validators=[FileRequired(), FileAllowed(['jpg','png'], 'Images only allowed.')])
+    sub = BooleanField('Subscribe to receive updates about new posts.')
     submit = SubmitField('Sign Up')
 
     # Validate email
